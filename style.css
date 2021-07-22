@@ -1,0 +1,39 @@
+.header
+{
+    font-size: xx-large;
+    color: black;
+    letter-spacing: 3px;
+    font-variant: small-caps;
+    width: 100%;
+}
+.note
+{
+    width: 100%;
+    font-size: 20px;
+    color: black;
+    font-weight: bolder;
+}
+#footer
+{
+    position: fixed;
+    bottom:0px;
+    width: 100%;
+    height: fit-content;
+    font-size: 21px;
+    background-color: black;
+    color: white;
+}
+
+#footer:hover
+{
+    color: black;
+    background-color: cyan;
+    font-size: 30px;
+}
+canvas
+{
+    margin-top: 5%;
+    border: 5px solid black;
+    background-color: grey;
+    color: white;
+}
