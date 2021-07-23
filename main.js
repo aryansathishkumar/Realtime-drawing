@@ -34,17 +34,17 @@ function getposes(results)
     noseX = results[0].pose.nose.x;
     noseY = results[0].pose.nose.y;
     
-    leftAnkleX = results[0].pose.leftAnkle.x;
-    leftAnkleY = results[0].pose.leftAnkle.y;
+    leftwristX = results[0].pose.leftWrist.x;
+    leftwristY = results[0].pose.leftWrist.y;
 
-    rightAnkleX = results[0].pose.rightAnkle.x;
-    rightAnkleY = results[0].pose.rightAnkle.y;
+    rightwristX = results[0].pose.rightWrist.x;
+    rightwristY = results[0].pose.rightWrist.y;
 
-    right_total = rightAnkleX + rightAnkleY;
-    left_total = leftAnkleX + rightAnkleX;
+    right_total = rightwristX + rightwristY;
+    left_total = leftwristX + leftwristY;
 
-    var_right = (right_total - left_total)*2;
-    var_left = (left_total-right_total)*2;
+    var_right = (right_total - left_total);
+    var_left = (left_total - right_total);
 
 }
 function draw()
@@ -57,12 +57,16 @@ function draw()
         setTimeout(function(){
           fill("grey")
           rect(401, 0, 500, 400);  
-        }, 1000);
+        }, 700);
     }
     else if(left_total > right_total)
     {
         fill("pink");
-        rect(noseX + 400, noseY, var_left, var_right);
+        rect(noseX + 400, noseY, var_left, var_left);
+        setTimeout(function(){
+            fill("grey")
+            rect(401, 0, 500, 400);  
+          }, 700);
     }
     /*else
     {
