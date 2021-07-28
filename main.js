@@ -5,10 +5,10 @@ function preload()
 
 noseX = 0;
 noseY = 0;
-leftAnkleX = 0;
-leftAnkleY = 0;
-rightAnkleX = 0;
-rightAnkleY = 0;
+leftwristX = 0;
+leftwristY = 0;
+rightwristX = 0;
+rightwristY = 0;
 varX = 0;
 varY = 0;
 right_total = 0;
@@ -18,11 +18,11 @@ var_left = 0;
 
 function setup()
 {
-    canvas = createCanvas(900, 400);
+    canvas = createCanvas(500, 400);
     canvas.center();
     video = createCapture(VIDEO);
-    video.size(400, 400);
-    video.hide();
+    video.size(450, 450);
+    video.position(100, 225);
 
     var poseNet = ml5.poseNet(video, loaded);
     poseNet.on("pose", getposes);
@@ -49,29 +49,28 @@ function getposes(results)
 }
 function draw()
 {
-    image(video, 0, 0, 400, 400);
     if(right_total > left_total)
     {
         fill("pink");
-        rect(noseX + 400, noseY, var_right, var_right);
+        rect(noseX, noseY, var_right, var_right);
+        document.getElementById("width").innerHTML = Math.floor(var_right);
+        document.getElementById("height").innerHTML = Math.floor(var_right);
         setTimeout(function(){
           fill("grey")
-          rect(401, 0, 500, 400);  
+          rect(0, 0, 500, 400);  
         }, 700);
     }
     else if(left_total > right_total)
     {
         fill("pink");
-        rect(noseX + 400, noseY, var_left, var_left);
+        rect(noseX, noseY, var_left, var_left);
+        document.getElementById("width").innerHTML = Math.floor(var_left);
+        document.getElementById("height").innerHTML = Math.floor(var_left);
         setTimeout(function(){
             fill("grey")
-            rect(401, 0, 500, 400);  
+            rect(0, 0, 500, 400);  
           }, 700);
     }
-    /*else
-    {
-        window.alert("There is an error.Try reloading the page.We make sure to not happen this thing again")
-    }*/
 }    
 function loaded()
 {
